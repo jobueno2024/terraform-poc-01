@@ -1,3 +1,0 @@
-# terraform.tfvars
-project_id = "my-dev-project-id"
-region     = "asia-northeast1"
