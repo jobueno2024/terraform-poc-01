@@ -11,3 +11,10 @@ module "internal_cloudrun_service" {
   image    = "gcr.io/cloudrun/hello"
   ingress  = "INGRESS_TRAFFIC_INTERNAL_ONLY"
 }
+
+resource "google_cloud_run_v2_service_iam_member" "no_auth" {
+  location = module.internal_cloudrun_service.location
+  name     = module.internal_cloudrun_service.name
+  role     = "roles/run.invoker"
+  member   = "allUsers"
+}
