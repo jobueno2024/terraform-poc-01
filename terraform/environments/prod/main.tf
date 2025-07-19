@@ -18,3 +18,14 @@ resource "google_cloud_run_v2_service_iam_member" "no_auth" {
   role     = "roles/run.invoker"
   member   = "allUsers"
 }
+
+module "bastion" {
+  source        = "../../modules/bastion"
+  network_name  = var.bastion_network_name
+  subnet_name   = var.bastion_subnet_name
+  subnet_cidr   = var.bastion_subnet_cidr
+  region        = var.region
+  instance_name = var.bastion_instance_name
+  instance_type = var.bastion_instance_type
+  zone          = var.bastion_zone
+}
